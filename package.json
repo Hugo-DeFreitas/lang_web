@@ -11,6 +11,7 @@
     "./dist/**/*.js"
   ],
   "scripts": {
+    "compile-my-sass" : "sass src/scss/main.scss > dist/css/uikit.css",
     "build-scss": "node build/scss",
     "compile": "yarn compile-less && yarn compile-js",
     "compile-js": "node build/build",
