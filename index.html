@@ -1,66 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RFC Viewer</title>
-    <link rel="icon" href="img/favicon.ico">
+    <meta charset="utf-8">
+
+    <base href="https://www.rfc-viewer.org/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Hugo De Freitas">
+
+    <meta name="description" content="Hugo De Freitas">
+
+    <meta name="keywords" content="RFC,documentation,visualisateur">
+
+    <link rel="icon" href="src/images/favicon.ico">
+
     <link rel="stylesheet" type="text/css" href="dist/css/uikit.css">
 </head>
 <body>
 
-<!--HEADER-->
 <header>
-    <div class="uk-container">
-        <nav class="uk-navbar-transparent" data-uk-navbar>
-            <div class="uk-navbar-left">
-                <a class="uk-navbar-item uk-logo" href="#">Logo</a>
-            </div>
-            <div class="uk-navbar-center uk-visible@m">
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="#">Albums</a></li>
-                    <li>
-                        <a href="#">Collections <span data-uk-icon="icon: triangle-down"></span></a>
-                        <div class="uk-navbar-dropdown">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                <li><a href="#">Landscape</a></li>
-                                <li><a href="#">Nature</a></li>
-                                <li><a href="#">Social</a></li>
-                                <li><a href="#">Urban</a></li>
-                                <li><a href="#">Music</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#">Most Viewed</a></li>
-                </ul>
-            </div>
-            <div class="uk-navbar-right">
-                <ul class="uk-navbar-nav">
-                    <li>
-                        <a href="#" data-uk-icon="icon:user"></a>
-                        <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                <li class="uk-nav-header uk-text-small uk-text-primary">YOUR ACCOUNT</li>
-                                <li><a href="#"><span data-uk-icon="icon: info"></span> Summary</a></li>
-                                <li><a href="#"><span data-uk-icon="icon: refresh"></span> Edit</a></li>
-                                <li><a href="#"><span data-uk-icon="icon: settings"></span> Configuration</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li><a href="#"><span data-uk-icon="icon: image"></span> Your Pictures</a></li>
-                                <li class="uk-nav-divider"></li>
-                                <li><a href="#"><span data-uk-icon="icon: sign-out"></span> Logout</a></li>
+    <nav class="uk-navbar-transparent uk-navbar-container" data-uk-navbar>
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#">Logo</a>
+        </div>
+        <div class="uk-navbar-center uk-visible@m">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="#">Albums</a></li>
+                <li>
+                    <a href="#">Collections <span data-uk-icon="icon: triangle-down"></span></a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a href="#">Landscape</a></li>
+                            <li><a href="#">Nature</a></li>
+                            <li><a href="#">Social</a></li>
+                            <li><a href="#">Urban</a></li>
+                            <li><a href="#">Music</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Most Viewed</a></li>
+            </ul>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#" data-uk-icon="icon:user"></a>
+                    <div class="uk-navbar-dropdown uk-navbar-dropdown-bottom-left">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-nav-header uk-text-small uk-text-primary">YOUR ACCOUNT</li>
+                            <li><a href="#"><span data-uk-icon="icon: info"></span> Summary</a></li>
+                            <li><a href="#"><span data-uk-icon="icon: refresh"></span> Edit</a></li>
+                            <li><a href="#"><span data-uk-icon="icon: settings"></span> Configuration</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="#"><span data-uk-icon="icon: image"></span> Your Pictures</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="#"><span data-uk-icon="icon: sign-out"></span> Logout</a></li>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="uk-hidden@m"><a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+                        </ul>
+                    </div>
+                </li>
+                <li class="uk-hidden@m"><a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a></li>
+            </ul>
+        </div>
+    </nav>
 </header>
-<!--/HEADER-->
 
-<!--HERO-->
 <section class="uk-section uk-section-large uk-section-secondary">
     <div class="uk-container uk-container-small uk-text-center">
         <h1>Album example</h1>
@@ -74,8 +79,7 @@
         </div>
     </div>
 </section>
-<!--/HERO-->
-<!-- INFO -->
+
 <section class="uk-section uk-section-default uk-box-shadow-small uk-section-xsmall">
     <div class="uk-container">
         <div class="uk-grid uk-grid-small uk-flex uk-flex-middle" data-uk-grid>
