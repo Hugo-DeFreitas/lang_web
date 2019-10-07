@@ -11,7 +11,8 @@
     "./dist/**/*.js"
   ],
   "scripts": {
-    "compile-my-sass" : "sass src/scss/main.scss > dist/css/uikit.css",
+    "compile-my-sass": "sass src/scss/main.scss > dist/css/uikit.css",
+    "my-watch": "sass --watch src/scss/main.scss:dist/css/uikit.css --style compressed",
     "build-scss": "node build/scss",
     "compile": "yarn compile-less && yarn compile-js",
     "compile-js": "node build/build",
@@ -73,5 +74,6 @@
       "patterns": "**/*.less",
       "extensions": "less"
     }
-  }
+  },
+  "author": ""
 }
