@@ -1,5 +1,8 @@
 // 1. Your custom variables and variable overwrites.
-$global-link-color: #4bda59;
+$global-link-color: #da2334;
+details summary::-webkit-details-marker {
+  display:none;
+}
 
 // 2. Import default variables and available mixins.
 @import "variables-theme.scss";

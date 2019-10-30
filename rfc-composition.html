@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <title>Analyse RFC</title>
     <meta charset="UTF-8">
@@ -10,67 +10,96 @@
     <link rel="icon" href="src/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="dist/css/uikit.css">
 </head>
-<body>
-<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+<!--Étant une application one-page, le contenu du document peut ponctuellement changer, si l'utilisateur le souhaite.-->
+<!--L'attribut aria-live est donc à polite. La lecture reprendra ainsi lors du changement depuis le début -->
+<body role="application" aria-live="polite">
+<nav class="uk-navbar-container uk-navbar-transparent uk-navbar">
     <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
             <li class="uk-active">
                 <a class="uk-navbar-item uk-logo">
-                    <img class="uk-animation-stroke" width="40" height="40" src="src/images/icons/file-text.svg"
-                         alt="Logo du site, une simple feuille de papier"
-                         uk-svg="stroke-animation: true">
+                    <img id="docviewer-logo" class="uk-animation-stroke" width="50" height="50" src="src/images/icons/file-text.svg"
+                         alt="Logo du site, une simple feuille de papier" data-uk-svg="stroke-animation: true">
                     &nbsp;DocViewer
                 </a>
             </li>
             <li>
-                <a href="#">Télécharger</a>
+                <a href="#">Download</a>
             </li>
         </ul>
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li class="uk-active">
-                <a class="uk-navbar-item uk-logo" href="#sidebar" uk-toggle>
-                    <img class="uk-animation-stroke" width="40" height="40" src="src/images/icons/menu.svg"
-                         alt="symbole du menu"
-                         uk-svg="stroke-animation: true">
+                <a class="uk-navbar-item uk-logo">
+                    <img aria-label="Open the sidebar"
+                         id="open-sidebar" width="40" height="40" src="src/images/icons/menu.svg"
+                         alt="menu's symbol" data-uk-toggle="target: #sidebar">
                 </a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div id="sidebar" uk-offcanvas>
+<section id="sidebar" data-uk-offcanvas>
     <div class="uk-offcanvas-bar">
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <h1 class="uk-h3">DocViewer</h1>
-        <p>
-            DocViewer révolutionne votre manière de consulter de la <em>documentation technique</em>.
-            Fiche RFC, description de frameworks, de langages, retrouvez des informations sûres, fiables et de manière organisée.
-        </p>
+        <!-- Fermeture de la sidebar -->
+        <button id="close-sidebar" class="uk-offcanvas-close" type="button" data-uk-close aria-label="Close the sidebar"></button>
+
+        <!-- Texte de présentation de DocViewer-->
+        <div id="docviewer-introduction" class="uk-margin-xlarge-bottom">
+            <h1 id="docviewer-navbar-title" aria-describedby="docviewer-navbar-description" class="uk-h3">DocViewer</h1>
+            <p id="docviewer-navbar-description" class="uk-text-small" aria-labelledby="docviewer-navbar-title">
+                DocViewer révolutionne votre manière de consulter de la <em>documentation technique</em>.
+                Fiche RFC, description de frameworks, de langages, retrouvez des informations sûres, fiables et de manière organisée.
+            </p>
+        </div>
+
+        <!-- Navigation entre les différentes fiches RFC-->
+        <div id="sidebar-nav-between-rfc" role="contentinfo">
+            <h1 id="sidebar-nav-between-rfc-heading" class="uk-nav-header">Autres fiches RFC</h1>
+            <p id="sidebar-nav-between-rfc-description" class="uk-text-small uk-text-italic">
+                Cliquez sur des nouvelles fiches pour changer le contenu du document.
+            </p>
+            <ul class="uk-nav uk-nav-default"
+                role="list"
+                aria-labelledby="sidebar-nav-between-rfc-heading"
+                aria-describedby="sidebar-nav-between-rfc-description">
+                <li role="listitem">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: table"></span>&nbsp;RFC1149
+                    </a>
+                </li>
+                <li role="listitem">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: table"></span>&nbsp;RFC2549
+                    </a>
+                </li>
+                <li role="listitem">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: table"></span>&nbsp;RFC6214
+                    </a>
+                </li>
+            </ul>
+
+        </div>
     </div>
-</div>
+</section>
 
-
-
-<!--<ul uk-accordion>-->
-    <!--<li>-->
-        <!--<a class="uk-accordion-title" href="#"></a>-->
-        <!--<div class="uk-accordion-content"></div>-->
-    <!--</li>-->
-<!--</ul>-->
-
-<main class="uk-align-center uk-width-5-6" >
+<main class="uk-align-center uk-align-center uk-width-5-6@s uk-width-2-3@l" >
     <h1>A Standard for the Transmission of IP Datagrams on Avian Carriers</h1>
-
     <details class="uk-card uk-card-secondary uk-card-hover uk-card-body" open>
-        <summary class="uk-h3">Status of this Memo</summary>
-        <p>
-            This memo describes an experimental method for the encapsulation of <abbr title="Internet Protocol">IP</abbr> datagrams in avian carriers.<br>
-            This specification is primarily useful in Metropolitan Area Networks.
-        <hr class="uk-divider-small">
-        This is an experimental, not recommended standard.  Distribution of this memo is unlimited.<br>
-        </p>
+        <summary id="rfc-summary-heading" class="uk-h3">Status of this Memo</summary>
+        <div id="rfc-summary-content" aria-labelledby="rfc-summary-heading">
+            <p>
+                This memo describes an experimental method for the encapsulation of <abbr title="Internet Protocol">IP</abbr> datagrams in avian carriers.<br>
+                This specification is primarily useful in Metropolitan Area Networks.
+            </p>
+            <hr class="uk-divider-small">
+            <p>
+                This is an experimental, not recommended standard.  Distribution of this memo is unlimited.<br>
+            </p>
+        </div>
     </details>
 
     <section class="uk-section">
@@ -80,7 +109,7 @@
                 Avian carriers can provide high delay, low throughput, and low altitude service.
                 The connection topology is limited to a single point-to-point path for each carrier, used with standard carriers,
                 but many carriers can be used without significant interference with each other, outside of early spring.  This is because of
-                the 3D ether space available to the carriers, in contrast to the 1D ether used by <a class="uklin">IEEE802.3</a>.
+                the 3D ether space available to the carriers, in contrast to the 1D ether used by <a href="">IEEE802.3</a>.
                 The carriers have an intrinsic collision avoidance system, which increases availability. Unlike some network technologies, such
                 as packet radio, communication is not limited to line-of-sight distance. Connection oriented service is available in some cities,
                 usually based upon a central hub topology.
@@ -127,31 +156,64 @@
         </div>
     </section>
 
-    <section class="uk-section uk-section-primary">
-        <div class="uk-container">
-            <h1 id="authors-address">Author's Address</h1>
-            <address>
-                <ul>
-                    <li>David Waitzman</li>
-                    <li>BBN Labs Division</li>
-                    <li>BBN Systems and Technologies Corporation</li>
-                    <li>10 Moulton Street, Cambridge, MA 02238</li>
-                    <li>Tel: <span property="telephone">(512) 471-5883</span></li>
-                    <li>EMail: <a href="mailto:dwaitzman@BBN.COM">dwaitzman@BBN.COM</a></li>
-                </ul>
-            </address>
+    <section id="rfc-informations" aria-labelledby="rfc-informations-heading">
+        <h1 id="rfc-informations-heading">Informations du document</h1>
+        <div class="uk-grid">
+            <!--            Informations générales-->
+            <div class="uk-margin-medium-bottom uk-width-1-2@l">
+                <h1 id="rfc-general-informations-heading" class="uk-text-large">Informations générales</h1>
+                <dl aria-labelledby="rfc-general-informations-heading">
+                    <!--            Emetteur-->
+                    <dt class="uk-display-inline" id="submitter-label">Émetteur</dt>
+                    <dd id="submitter">Network Working Group</dd>
+                    <!--            Date de parution-->
+                    <dt id="date-label">Date de parution</dt>
+                    <dd id="date"><time datetime="1990-04-01">1 April 1990</time></dd>
+                    <!--            Mis à jour par-->
+                    <dt id="updatedBy-label">Mis à jour par</dt>
+                    <dd id="updatedBy">2549, 6214</dd>
+                </dl>
+            </div>
+
+            <!--            Informations propres à l'auteur de la fiche-->
+            <div class="uk-width-1-2@l">
+                <h1 id="rfc-author-informations-heading" class="uk-text-large">Auteur</h1>
+                <dl aria-labelledby="rfc-author-informations-heading">
+                    <!--            Prénom-->
+                    <dt id="author-name-label">Prénom</dt>
+                    <dd id="author-name"><span id="author-firstName">David</span> <span id="author-latName">Waitzman</span></dd>
+                    <!--            Labo-->
+                    <dt id="author-laboratory-label">Laboratoire</dt>
+                    <dd id="author-laboratory">BBN Labs Division</dd>
+                    <!--            Société-->
+                    <dt id="author-company-label">Société</dt>
+                    <dd id="author-company"><abbr title="BBN Systems and Technologies Corporation">BBN STC</abbr></dd>
+                    <!--            Addresse-->
+                    <dt id="author-address-label">Adresse</dt>
+                    <dd id="author-address">10 Moulton Street, Cambridge, MA 02238</dd>
+                    <!--            Téléphone-->
+                    <dt id="author-phone-label">Téléphone</dt>
+                    <dd id="author-phone">Tel: <span property="telephone">(512) 471-5883</span></dd>
+                    <!--            Email-->
+                    <dt id="author-email-label">Email</dt>
+                    <dd id="author-email"><a href="mailto:dwaitzman@BBN.COM">dwaitzman@BBN.COM</a></dd>
+
+                </dl>
+            </div>
         </div>
     </section>
-
-    <footer>
-        <p>Network Working Group</p>
-        <p>D. Waitzman</p>
-        <p><time datetime="1990-04-01">1 April 1990</time></p>
-        <p>Updated by: 2549, 6214</p>
-        <p>BBN STC</p>
-    </footer>
 </main>
+
+<!--Footer du site-->
+<footer class="uk-background-secondary uk-padding-small">
+    <div class="uk-grid-small uk-child-width-1-4@s uk-flex-right uk-text-center" uk-grid>
+        <div class="uk-flex-last">
+            aZERAEZREZAERAZAZEERAERE
+        </div>
+    </div>
+</footer>
 </body>
 <script src="dist/js/uikit.min.js"></script>
 <script src="dist/js/uikit-icons.min.js"></script>
+<script src="dist/js/main.js"></script>
 </html>
