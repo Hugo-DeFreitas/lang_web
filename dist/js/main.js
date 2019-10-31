@@ -1,5 +1,5 @@
 let changeDocumentTriggers = document.querySelector('.change-document-trigger');
-DocViewerDocument.load('RFC2549').then((newDocument)=>{
+DocViewerDocument.load('RFC6214').then((newDocument)=>{
     let sideBar = document.querySelector('#sidebar');
     sideBar.parentNode.insertBefore(newDocument.getElement(), sideBar.nextSibling);
 });

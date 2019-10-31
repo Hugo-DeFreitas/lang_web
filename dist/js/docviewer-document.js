@@ -113,27 +113,28 @@ class DocViewerDocument {
             <!--            Informations propres à l'auteur de la fiche-->
             <div class="uk-width-1-2@l">
                 <h1 id="rfc-author-informations-heading" class="uk-text-large">Author</h1>
+                ${Object.keys(this.author).map((authorObject,i)=>`
                 <dl aria-labelledby="rfc-author-informations-heading">
                     <!--            Prénom-->
                     <dt id="author-name-label">Name</dt>
-                    <dd id="author-name"><span id="author-firstName">David</span> <span id="author-lastName">Waitzman</span></dd>
+                    <dd id="author-name"><span id="author-firstName">${this.author[i].firstName}</span> <span id="author-lastName">${this.author[i].lastName}</span></dd>
                     <!--            Labo-->
                     <dt id="author-laboratory-label">Laboratory</dt>
-                    <dd id="author-laboratory">BBN Labs Division</dd>
+                    <dd id="author-laboratory">${this.author[i].laboratory}</dd>
                     <!--            Société-->
                     <dt id="author-company-label">Company</dt>
-                    <dd id="author-company"><abbr title="BBN Systems and Technologies Corporation">BBN STC</abbr></dd>
+                    <dd id="author-company"><abbr title="BBN Systems and Technologies Corporation">${this.author[i].company}</abbr></dd>
                     <!--            Addresse-->
                     <dt id="author-address-label">Adresse</dt>
-                    <dd id="author-address">10 Moulton Street, Cambridge, MA 02238</dd>
+                    <dd id="author-address">${this.author[i].address}</dd>
                     <!--            Téléphone-->
                     <dt id="author-phone-label">Phone number</dt>
-                    <dd id="author-phone">Tel: <span property="telephone">(512) 471-5883</span></dd>
+                    <dd id="author-phone"><span property="telephone">${this.author[i].phone}</span></dd>
                     <!--            Email-->
                     <dt id="author-email-label">Email</dt>
-                    <dd id="author-email"><a href="mailto:dwaitzman@BBN.COM">dwaitzman@BBN.COM</a></dd>
-
+                    <dd id="author-email"><a href="mailto:dwaitzman@BBN.COM">${this.author[i].email}</a></dd>
                 </dl>
+                `).join("")}
             </div>
         </div>
     </section>
