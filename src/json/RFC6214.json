@@ -5,7 +5,7 @@
     "category" : "INFORMATIONAL",
     "date" : {
       "text" : "1 April 2011",
-      "date-value" : "01/04/2011"
+      "datetime" : "2011-04-01"
     },
     "submitter" : "Network Working Group",
     "updatedBy" : [2549,6214],
