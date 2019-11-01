@@ -21,7 +21,7 @@ class DocViewerDocument {
 
     toHTML(){
         let finalString = `
-<main class="uk-align-center uk-align-center uk-width-5-6@s uk-width-2-3@l" >
+<main data-document_id="${this.id}" class="uk-align-center uk-align-center uk-width-5-6@s uk-width-2-3@l" >
     <h1>${this.title}</h1>
     <details class="uk-card uk-card-secondary uk-card-hover uk-card-body" open>
         <summary id="rfc-summary-heading" class="uk-h3">Status of this Memo</summary>
@@ -103,42 +103,51 @@ class DocViewerDocument {
                     <dd id="submitter">Network Working Group</dd>
                     <!--            Date de parution-->
                     <dt id="date-label">Publication date</dt>
-                    <dd id="date"><time datetime="1990-04-01">1 April 1990</time></dd>
+                    <dd id="date"><time datetime="${this.informations.date.datetime}">${this.informations.date.text}</time></dd>
                     <!--            Mis à jour par-->
                     <dt id="updatedBy-label">Updated by</dt>
-                    <dd id="updatedBy">2549, 6214</dd>
+                    <dd id="updatedBy">${Object.keys(this.informations.updatedBy)
+                        .map((value,i)=>`<a>${this.informations.updatedBy[i]}</a>${this.informations.updatedBy.length !== (i+1) ? `,` : ``}`)}</dd>
+                    <!--            Mets à jour-->
+                    <dt id="updates-label">Updates</dt>
+                    <dd id="updates">${this.informations.updates ? this.informations.updates : '{{UNKNOWN}}'}</dd>
                 </dl>
             </div>
 
             <!--            Informations propres à l'auteur de la fiche-->
             <div class="uk-width-1-2@l">
-                <h1 id="rfc-author-informations-heading" class="uk-text-large">Author</h1>
+                <h1 id="rfc-author-informations-heading" class="uk-text-large">Author${this.author.length > 1 ? 's' : ''}</h1>
                 ${Object.keys(this.author).map((authorObject,i)=>`
                 <dl aria-labelledby="rfc-author-informations-heading">
                     <!--            Prénom-->
-                    <dt id="author-name-label">Name</dt>
-                    <dd id="author-name"><span id="author-firstName">${this.author[i].firstName}</span> <span id="author-lastName">${this.author[i].lastName}</span></dd>
+                    <dt id="author-name-label_${this.author[i].firstName}_${this.author[i].lastName}">Name</dt>
+                    <dd id="author-name_${this.author[i].firstName}_${this.author[i].lastName}"><span id="author-firstName_${this.author[i].firstName}_${this.author[i].lastName}">${this.author[i].firstName}</span> <span id="author-lastName_${this.author[i].firstName}_${this.author[i].lastName}">${this.author[i].lastName}</span></dd>
                     <!--            Labo-->
-                    <dt id="author-laboratory-label">Laboratory</dt>
-                    <dd id="author-laboratory">${this.author[i].laboratory}</dd>
+                    <dt id="author-laboratory-label_${this.author[i].firstName}_${this.author[i].lastName}">Laboratory</dt>
+                    <dd id="author-laboratory_${this.author[i].firstName}_${this.author[i].lastName}">
+                        ${this.author[i].laboratory ? this.author[i].laboratory : '{{UNKNOWN}}'}
+                    </dd>
                     <!--            Société-->
-                    <dt id="author-company-label">Company</dt>
-                    <dd id="author-company"><abbr title="BBN Systems and Technologies Corporation">${this.author[i].company}</abbr></dd>
+                    <dt id="author-company-label_${this.author[i].firstName}_${this.author[i].lastName}">Company</dt>
+                    <dd id="author-company_${this.author[i].firstName}_${this.author[i].lastName}"><abbr title="BBN Systems and Technologies Corporation">${this.author[i].company}</abbr></dd>
                     <!--            Addresse-->
-                    <dt id="author-address-label">Adresse</dt>
-                    <dd id="author-address">${this.author[i].address}</dd>
+                    <dt id="author-address-label_${this.author[i].firstName}_${this.author[i].lastName}">Adresse</dt>
+                    <dd id="author-address_${this.author[i].firstName}_${this.author[i].lastName}">${this.author[i].address}</dd>
                     <!--            Téléphone-->
-                    <dt id="author-phone-label">Phone number</dt>
-                    <dd id="author-phone"><span property="telephone">${this.author[i].phone}</span></dd>
+                    <dt id="author-phone-label_${this.author[i].firstName}_${this.author[i].lastName}">Phone number</dt>
+                    <dd id="author-phone_${this.author[i].firstName}_${this.author[i].lastName}">
+                    <span property="telephone">${this.author[i].phone ? this.author[i].phone : '{{UNKNOWN}}'}</span>
+                    </dd>
                     <!--            Email-->
-                    <dt id="author-email-label">Email</dt>
-                    <dd id="author-email"><a href="mailto:dwaitzman@BBN.COM">${this.author[i].email}</a></dd>
+                    <dt id="author-email-label_${this.author[i].firstName}_${this.author[i].lastName}">Email</dt>
+                    <dd id="author-email_${this.author[i].firstName}_${this.author[i].lastName}"><a href="mailto:dwaitzman@BBN.COM">${this.author[i].email}</a></dd>
                 </dl>
+               ${this.author.length > 1 && (i+1) !== this.author.length ? '<hr class="uk-divider-small">' : ''}
                 `).join("")}
             </div>
         </div>
     </section>
 </main>`;
-        return finalString;
+        return finalString.replace(/{{UNKNOWN}}/g, 'Not defined');
     }
 }

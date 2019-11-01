@@ -1,8 +1,54 @@
-let changeDocumentTriggers = document.querySelector('.change-document-trigger');
-DocViewerDocument.load('RFC6214').then((newDocument)=>{
+/*
+On va venir jouer avec un spinner lors des chargements dynamiques du spinner et les promises pour une meilleure expérience utilisateur.
+Toutefois, c'est tellement rapide qu'on ne risque de même pas le voir visuellement.
+On ne sait jamais ce qui peut se passer avec les temps de réponse, donc cette fonctionnalité est quand même opérationnelle, ce qui
+est plus user-friendly.
+ */
+
+let spinner = document.querySelector('#spinner');
+let currentDocumentLoaded = 'RFC1149';
+
+//On charge le document avec l'ID correct pour l'initialisation de la page.
+spinner.removeAttribute('hidden');
+
+DocViewerDocument.load(currentDocumentLoaded).then((newDocument)=>{
+    spinner.setAttribute('hidden','');
     let sideBar = document.querySelector('#sidebar');
     sideBar.parentNode.insertBefore(newDocument.getElement(), sideBar.nextSibling);
 });
+
+//On vient activer les clicks handlers pour changer de document
+let changeDocumentTriggers = document.getElementsByClassName('change-document-trigger');
+console.log(changeDocumentTriggers);
+for (let elementTriggered of changeDocumentTriggers) {
+    elementTriggered.addEventListener('click',function(e){
+        spinner.removeAttribute('hidden');
+        let self = e.target;
+        let sideBar = document.querySelector('#sidebar');
+        let documentToLoadID = self.dataset.document_source_json_name;
+
+        //On va venir supprimer le corps du document et mettre un spinner le temps de charger l'élément.
+        let currentDocumentElement = document.querySelector('main');
+        //Pour économiser des allers-retours avec le serveur, on va dans un premier temps uniquement cacher le document actuel.
+        //Si on aura réussi toute la procédure de chargement du prochain document, alors on pourra réellement venir supprimer du dom cet élément
+        currentDocumentElement.style.display = 'none';
+
+        //On vient récupérer le prochain JSON sur le serveur.
+        DocViewerDocument.load(documentToLoadID)
+        //Si la promise renvoit un résultat positif
+            .then((newDocument)=>{
+                currentDocumentElement.parentNode.removeChild(currentDocumentElement);
+                sideBar.parentNode.insertBefore(newDocument.getElement(), sideBar.nextSibling);
+            })
+            //Si ça s'est mal passé, on a juste a rendre l'ancien document visible à nouveau.
+            .catch(()=>{
+                currentDocumentElement.style.display = '';
+            })
+            //Quoiqu'il arrive, on enlève le spinner.
+            .finally(()=>{spinner.setAttribute('hidden','');});
+    });
+}
+
 
 
 /**================
@@ -20,7 +66,7 @@ function loadFileOnServer(path)
         {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                        resolve(JSON.parse(xhr.responseText));
+                    resolve(JSON.parse(xhr.responseText));
                 } else {
                     reject("Erreur lors de la récupération sur le serveur.");
                 }
