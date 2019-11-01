@@ -31,7 +31,7 @@ class DocViewerDocument {
                 class="uk-text-top"></a>
         </div>
         
-        <h1 class="uk-text-center">${this.title}</h1>
+        <h1 class="uk-text-center uk-text-light">"${this.title}"</h1>
         <section id="modal-informations_${this.id}" class="uk-modal-full" data-uk-modal>
             <div class="uk-modal-dialog">
                 <button class="uk-modal-close-full uk-close-large" type="button" data-uk-close></button>
@@ -78,7 +78,7 @@ class DocViewerDocument {
         <!--    Pour chaque 'content.parts' du document, on créé une nouvelle section-->
         ${Object.keys(this.content.parts).map((part,i)=>`
         <section aria-labelledby="heading-section-${i}" id="section-content-${i}" class="uk-section uk-container mono-font">
-            <h1 id="heading-section-${i}">${this.content.parts[i].partTitle}</h1>
+            <h1 id="heading-section-${i}" class="uk-h2">${this.content.parts[i].partTitle}</h1>
             ${this.content.parts[i].content}
         </section>
         ${(i+1) === this.content.parts.length ? '' : '<hr class="uk-divider-small">'}

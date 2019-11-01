@@ -5,7 +5,7 @@ On ne sait jamais ce qui peut se passer avec les temps de réponse, donc cette f
 est plus user-friendly.
  */
 let spinner = document.querySelector('#spinner');
-let currentDocumentLoaded = 'RFC2549';
+let currentDocumentLoaded = 'RFC6214';
 
 /*
 Si l'utilisateur souhaite télécharger la source du document actuel au format JSON
@@ -77,9 +77,15 @@ function initHandlers() {
             let self = e.target;
             let sideBar = document.querySelector('#sidebar');
             let documentToLoadID = self.dataset.document_source_json_name;
+            console.log("Trying to load document n°",documentToLoadID);
 
             //On va venir supprimer le corps du document et mettre un spinner le temps de charger l'élément.
             let currentDocumentElement = document.querySelector('main');
+            if(!currentDocumentElement){
+                console.error("No 'main' element has been found.");
+                return;
+            }
+
             //Pour économiser des allers-retours avec le serveur, on va dans un premier temps uniquement cacher le document actuel.
             //Si on aura réussi toute la procédure de chargement du prochain document, alors on pourra réellement venir supprimer du dom cet élément
             currentDocumentElement.style.display = 'none';
