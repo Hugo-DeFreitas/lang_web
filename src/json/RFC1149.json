@@ -13,6 +13,10 @@
     "linkedWith" : [6214]
   },
   "content" : {
+    "errata" : {
+      "exists" : true,
+      "link" : "https://www.rfc-editor.org/errata_search.php?rfc=1149"
+    },
     "status" : "This memo describes an experimental method for the encapsulation of <abbr title=\"Internet Protocol\">IP</abbr> datagrams in avian carriers.<br>This specification is primarily useful in Metropolitan Area Networks.",
     "statusMeta" : "This is an experimental, not recommended standard. Distribution of this memo is unlimited.",
     "copyrightNotice": null,

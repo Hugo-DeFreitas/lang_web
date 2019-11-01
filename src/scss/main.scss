@@ -1,5 +1,6 @@
-// 1. Your custom variables and variable overwrites.
-$global-link-color: #da2334;
+// Custom variables overwrites.
+$global-primary-background: #da2334;
+$global-link-color: $global-primary-background;
 details summary::-webkit-details-marker {
   display:none;
 }

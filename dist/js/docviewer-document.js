@@ -21,14 +21,14 @@ class DocViewerDocument {
 
     toHTML(){
         let finalString = `
-<main role="main" data-document_id="${this.id}" class="uk-align-center uk-align-center uk-width-5-6@s uk-width-2-3@l" >
+<main role="main" data-document_id="${this.id}" class="uk-align-center uk-align-center uk-width-5-6@s uk-width-2-3@l" data-uk-scrollspy="cls: uk-animation-fade; delay: 50;">
     <section>
         <!--    Bouton pour ouvrir la modal qui contient les informations annexes de la documentation technique (status, copyright, ...)-->
         <div class="uk-margin-medium uk-text-center">
             <span class="uk-heading-xlarge uk-text-primary">RFC${this.id}</span>
-            <span role="link" aria-label="Complements for the current document"
-                data-href="#modal-informations_${this.id}" data-uk-toggle data-uk-icon="icon: info; ratio: 2"
-                class="uk-text-top"></span>
+            <a aria-label="Complements for the current document" aria-controls="modal-informations_${this.id}" 
+                data-uk-toggle="target: #modal-informations_${this.id}" data-uk-icon="icon: plus; ratio: 2"
+                class="uk-text-top"></a>
         </div>
         
         <h1 class="uk-text-center">${this.title}</h1>
@@ -43,6 +43,11 @@ class DocViewerDocument {
                             <details open>
                                 <summary id="rfc-summary-heading" class="uk-h3">Status of this memo</summary>
                                 <div id="rfc-summary-content" aria-labelledby="rfc-summary-heading">
+                                    ${this.content.errata.exists ? `
+                                        <div class="uk-alert-warning" data-uk-alert><a class="uk-alert-close" data-uk-close></a>
+                                            <p><a href="${this.content.errata.link}">An errata exists for this memo.</a></p>
+                                        </div>
+                                    `: ''}
                                     <!--Status of the memo-->
                                     <p>
                                         ${this.content.status}
@@ -60,7 +65,7 @@ class DocViewerDocument {
                                     <!--Asbtract-->
                                     <h1 class="uk-h3">Abstract</h1>
                                     <p>
-                                        ${this.content.copyrightNotice ? this.content.copyrightNotice : '{{UNKNOWN}}'}<br>
+                                        ${this.content.abstract ? this.content.abstract : '{{UNKNOWN}}'}<br>
                                     </p>
                                 </div>
                             </details>
