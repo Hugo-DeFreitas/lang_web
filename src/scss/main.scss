@@ -1,8 +1,13 @@
 // Custom variables overwrites.
-$global-primary-background: #da2334;
+$global-primary-background: #ff9a27;
 $global-link-color: $global-primary-background;
+$global-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 details summary::-webkit-details-marker {
   display:none;
+}
+
+.mono-font{
+  font-family: "Courier New", sans-serif;
 }
 
 //New background for RFC

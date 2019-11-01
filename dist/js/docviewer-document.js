@@ -21,7 +21,7 @@ class DocViewerDocument {
 
     toHTML(){
         let finalString = `
-<main role="main" data-document_id="${this.id}" class="uk-align-center uk-align-center uk-width-5-6@s uk-width-2-3@l" data-uk-scrollspy="cls: uk-animation-fade; delay: 50;">
+<main role="main" data-document_id="${this.id}" class="uk-align-center uk-align-center uk-width-5-6@s uk-width-4-5@l" data-uk-scrollspy="cls: uk-animation-fade; delay: 50;">
     <section>
         <!--    Bouton pour ouvrir la modal qui contient les informations annexes de la documentation technique (status, copyright, ...)-->
         <div class="uk-margin-medium uk-text-center">
@@ -77,9 +77,9 @@ class DocViewerDocument {
     
         <!--    Pour chaque 'content.parts' du document, on créé une nouvelle section-->
         ${Object.keys(this.content.parts).map((part,i)=>`
-        <section aria-labelledby="heading-section-${i}" id="section-content-${i}" class="uk-section uk-container">
+        <section aria-labelledby="heading-section-${i}" id="section-content-${i}" class="uk-section uk-container mono-font">
             <h1 id="heading-section-${i}">${this.content.parts[i].partTitle}</h1>
-            <p>${this.content.parts[i].content}</p>
+            ${this.content.parts[i].content}
         </section>
         ${(i+1) === this.content.parts.length ? '' : '<hr class="uk-divider-small">'}
         `).join('')}
@@ -102,15 +102,18 @@ class DocViewerDocument {
                         <!--            Mis à jour par-->
                         <dt id="updatedBy-label">Updated by</dt>
                         <dd id="updatedBy">
+                        ${this.informations.updatedBy ? `
                         ${Object.keys(this.informations.updatedBy).map((value,i)=>
-                        `
+            `
                         <a data-document_source_json_name="RFC${this.informations.updatedBy[i]}" class="change-document-trigger">
                             ${this.informations.updatedBy[i]}
                         </a>${this.informations.updatedBy.length === i+1 ? '' : ', '}
-                        `).join('')}</dd>
+                        `).join('')}
+                        ` : '{{UNKNOWN}}'}
+                        </dd>
                         <!--            Mets à jour-->
                         <dt id="updates-label">Updates</dt>
-                        <dd data-document_source_json_name="RFC${this.informations.updates}" class="change-document-trigger"id="updates">${this.informations.updates ? this.informations.updates : '{{UNKNOWN}}'}</dd>
+                        <dd id="updates">${this.informations.updates ? `<a data-document_source_json_name="RFC${this.informations.updates}" class="change-document-trigger">${this.informations.updates}</a>` : '{{UNKNOWN}}'}</dd>
                     </dl>
                 </div>
     
@@ -129,7 +132,7 @@ class DocViewerDocument {
                         </dd>
                         <!--            Société-->
                         <dt id="author-company-label_${this.author[i].firstName}_${this.author[i].lastName}">Company</dt>
-                        <dd id="author-company_${this.author[i].firstName}_${this.author[i].lastName}"><abbr title="BBN Systems and Technologies Corporation">${this.author[i].company}</abbr></dd>
+                        <dd id="author-company_${this.author[i].firstName}_${this.author[i].lastName}">${this.author[i].company}</dd>
                         <!--            Addresse-->
                         <dt id="author-address-label_${this.author[i].firstName}_${this.author[i].lastName}">Adresse</dt>
                         <dd id="author-address_${this.author[i].firstName}_${this.author[i].lastName}">${this.author[i].address}</dd>

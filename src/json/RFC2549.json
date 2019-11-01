@@ -8,7 +8,7 @@
       "datetime" : "1999-04-01"
     },
     "submitter" : "Network Working Group",
-    "updatedBy" : [2549,6214],
+    "updatedBy" : null,
     "updates" : 1149,
     "linkedWith" : [6214]
   },
@@ -28,7 +28,7 @@
       },
       {
         "partTitle" : "MIB and Management issues",
-        "content" : "<table class=\"uk-table uk-table-justify uk-table-divider\"><caption class=\"uk-margin\">The carriers will not line up in lexigraphic order but will naturally order in a large V shape. Bulk retrieval is possible using the Powerful Get-Net operator.</caption><thead><tr><th class=\"uk-width-small\">OBJECT-TYPE</th><th class=\"uk-width-small\">SYNTAX</th><th class=\"uk-width-small\">MAX-ACCESS</th><th class=\"uk-width-small\">STATUS</th><th>Description</th></tr></thead><tbody><tr><td>AvCarrier2</td><td>SEQUENCE OF DNA</td><td>can't-read</td><td>living</td><td>\"Definition of an avian carrier\" ::= { <span class=\"uk-text-meta\">life eukaryotes mitochondrial_eukaryotes crown_eukaryotes metazoa chordata craniata vertebrata gnathostomata sarcopterygii terrestrial_vertebrates amniota diapsida archosauromorpha archosauria dinosauria aves neornithes columbiformes columbidae columba livia</span> }</td></tr><tr><td>AvCarrier</td><td>SET OF Cells</td><td>not-accessible</td><td>obsolete</td><td>\"Definition of an avian carrier\" ::= { <span class=\"uk-text-meta\">life animalia chordata vertebrata aves columbiformes columbidae columba livia</span> }</td></tr><tr><td>PulseRate</td><td>Gauge(0..300)</td><td>read-only</td><td>current</td><td>\"Pulse rate of carrier, as measured in neck. Frequent sampling is disruptive to operations.\" ::= { <span class=\"uk-text-meta\">AvCarrier 1</span> }</td></tr></tbody></table>"
+        "content" : "<div class=\"uk-overflow-auto\"><table class=\"uk-table uk-table-justify uk-table-divider\"><caption class=\"uk-margin\">The carriers will not line up in lexigraphic order but will naturally order in a large V shape. Bulk retrieval is possible using the Powerful Get-Net operator.</caption><thead><tr><th class=\"uk-width-small\">OBJECT-TYPE</th><th class=\"uk-width-small\">SYNTAX</th><th class=\"uk-width-small\">MAX-ACCESS</th><th class=\"uk-width-small\">STATUS</th><th>Description</th></tr></thead><tbody><tr><td>AvCarrier2</td><td>SEQUENCE OF DNA</td><td>can't-read</td><td>living</td><td>\"Definition of an avian carrier\" ::= { <span class=\"uk-text-meta\">life eukaryotes mitochondrial_eukaryotes crown_eukaryotes metazoa chordata craniata vertebrata gnathostomata sarcopterygii terrestrial_vertebrates amniota diapsida archosauromorpha archosauria dinosauria aves neornithes columbiformes columbidae columba livia</span> }</td></tr><tr><td>AvCarrier</td><td>SET OF Cells</td><td>not-accessible</td><td>obsolete</td><td>\"Definition of an avian carrier\" ::= { <span class=\"uk-text-meta\">life animalia chordata vertebrata aves columbiformes columbidae columba livia</span> }</td></tr><tr><td>PulseRate</td><td>Gauge(0..300)</td><td>read-only</td><td>current</td><td>\"Pulse rate of carrier, as measured in neck. Frequent sampling is disruptive to operations.\" ::= { <span class=\"uk-text-meta\">AvCarrier 1</span> }</td></tr></tbody></table></div>"
       },
       {
         "partTitle" : "Specification of Requirements",

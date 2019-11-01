@@ -5,7 +5,7 @@ On ne sait jamais ce qui peut se passer avec les temps de réponse, donc cette f
 est plus user-friendly.
  */
 let spinner = document.querySelector('#spinner');
-let currentDocumentLoaded = 'RFC1149';
+let currentDocumentLoaded = 'RFC2549';
 
 /*
 Si l'utilisateur souhaite télécharger la source du document actuel au format JSON
@@ -15,8 +15,6 @@ downloadDocumentButton.addEventListener('click',()=>{
     console.log("User downloaded source");
     downloadSourceFileInBrowserForUser();
 });
-
-initHandlers();
 
 //On charge le document avec l'ID correct pour l'initialisation de la page.
 spinner.removeAttribute('hidden');
@@ -70,9 +68,9 @@ function downloadSourceFileInBrowserForUser() {
 }
 
 function initHandlers() {
-//On vient activer les clicks handlers pour changer de document
+    console.log("Initializing handlers");
+    //On vient activer les clicks handlers pour changer de document
     let changeDocumentTriggers = document.getElementsByClassName('change-document-trigger');
-    console.log(changeDocumentTriggers);
     for (let elementTriggered of changeDocumentTriggers) {
         elementTriggered.addEventListener('click',function(e){
             spinner.removeAttribute('hidden');
@@ -93,6 +91,7 @@ function initHandlers() {
                     currentDocumentElement.parentNode.removeChild(currentDocumentElement);
                     sideBar.parentNode.insertBefore(newDocument.getElement(), sideBar.nextSibling);
                     currentDocumentLoaded = 'RFC'+newDocument.id;
+                    initHandlers();
                 })
                 //Si ça s'est mal passé, on a juste a rendre l'ancien document visible à nouveau.
                 .catch(()=>{
