@@ -14,6 +14,7 @@
   },
   "content" : {
     "status" : "This memo defines an Experimental Protocol for the Internet community.  It does not specify an Internet standard of any kind. Discussion and suggestions for improvement are requested. Distribution of this memo is unlimited.",
+    "statusMeta" : "This is an experimental, not recommended standard. Distribution of this memo is unlimited.",
     "copyrightNotice": "Copyright (C) The Internet Society (1999).  All Rights Reserved.",
     "abstract" : "<p>This memo amends <a>RFC 1149, \"A Standard for the Transmission of IP Datagrams on Avian Carriers\"</a>, with Quality of Service information. This is an experimental, not recommended standard.</p>",
     "parts" : [

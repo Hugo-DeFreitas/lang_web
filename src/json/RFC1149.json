@@ -13,7 +13,8 @@
     "linkedWith" : [6214]
   },
   "content" : {
-    "status" : "This memo describes an experimental method for the encapsulation of, IP datagrams in avian carriers. This specification is primarily, useful in Metropolitan Area Networks. This is an experimental, not recommended standard. Distribution of this memo is unlimited.",
+    "status" : "This memo describes an experimental method for the encapsulation of <abbr title=\"Internet Protocol\">IP</abbr> datagrams in avian carriers.<br>This specification is primarily useful in Metropolitan Area Networks.",
+    "statusMeta" : "This is an experimental, not recommended standard. Distribution of this memo is unlimited.",
     "copyrightNotice": null,
     "abstract" : null,
     "parts" : [

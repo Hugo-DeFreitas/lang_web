@@ -4,6 +4,11 @@ details summary::-webkit-details-marker {
   display:none;
 }
 
+//New background for RFC
+.custom-developing-background {
+  background-image: url("../../src/images/backgrounds/developing.jpeg");
+}
+
 // 2. Import default variables and available mixins.
 @import "variables-theme.scss";
 @import "mixins-theme.scss";
