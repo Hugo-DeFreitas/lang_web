@@ -4,9 +4,19 @@ Toutefois, c'est tellement rapide qu'on ne risque de même pas le voir visuellem
 On ne sait jamais ce qui peut se passer avec les temps de réponse, donc cette fonctionnalité est quand même opérationnelle, ce qui
 est plus user-friendly.
  */
-
 let spinner = document.querySelector('#spinner');
 let currentDocumentLoaded = 'RFC1149';
+
+/*
+Si l'utilisateur souhaite télécharger la source du document actuel au format JSON
+ */
+let downloadDocumentButton = document.querySelector('#download-current-document-as-json');
+downloadDocumentButton.addEventListener('click',()=>{
+    console.log("User downloaded source");
+    downloadSourceFileInBrowserForUser();
+});
+
+
 
 //On charge le document avec l'ID correct pour l'initialisation de la page.
 spinner.removeAttribute('hidden');
@@ -39,6 +49,7 @@ for (let elementTriggered of changeDocumentTriggers) {
             .then((newDocument)=>{
                 currentDocumentElement.parentNode.removeChild(currentDocumentElement);
                 sideBar.parentNode.insertBefore(newDocument.getElement(), sideBar.nextSibling);
+                currentDocumentLoaded = 'RFC'+newDocument.id;
             })
             //Si ça s'est mal passé, on a juste a rendre l'ancien document visible à nouveau.
             .catch(()=>{
@@ -74,5 +85,18 @@ function loadFileOnServer(path)
         };
         xhr.open("GET", path, true);
         xhr.send();
+    });
+}
+
+function downloadSourceFileInBrowserForUser() {
+    loadFileOnServer('src/json/'+currentDocumentLoaded+'.json').then((result)=>{
+        let element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(result)));
+        element.setAttribute('download', currentDocumentLoaded+'.json');
+        element.setAttribute('hidden','');
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
     });
 }
