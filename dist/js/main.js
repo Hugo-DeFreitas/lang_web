@@ -31,10 +31,20 @@ searchForm.addEventListener("submit", function(evt) {
     }
     Promise.all(promiseDocumentSearchArr).then((documentsLoaded)=>{
         for(let documentLoaded of documentsLoaded){
-            if(deepFind(documentLoaded,searchBar.value)){
-                searchEngineResults
-                    .appendChild(createElementFromHTML(`<li><a data-document_source_json_name="RFC${documentLoaded.id}" class="change-document-trigger"><span class="uk-text-primary">RFC${documentLoaded.id}</span> - ${documentLoaded.title}</a></li>`));
-                ++resultCounter;
+            //Si la valeur commence par '#', on cherche uniquement dans les tags. Sinon c'est une recherche globale.
+            if(searchBar.value.startsWith("#")){
+                if(deepFind(documentLoaded.tags,searchBar.value.replace(/[#]+/g,''))){
+                    searchEngineResults
+                        .appendChild(createElementFromHTML(`<li><a data-document_source_json_name="RFC${documentLoaded.id}" class="change-document-trigger"><span class="uk-text-primary">RFC${documentLoaded.id}</span> - ${documentLoaded.title}</a></li>`));
+                    ++resultCounter;
+                }
+            }
+            else {
+                if(deepFind(documentLoaded,searchBar.value)){
+                    searchEngineResults
+                        .appendChild(createElementFromHTML(`<li><a data-document_source_json_name="RFC${documentLoaded.id}" class="change-document-trigger"><span class="uk-text-primary">RFC${documentLoaded.id}</span> - ${documentLoaded.title}</a></li>`));
+                    ++resultCounter;
+                }
             }
         }
         if(resultCounter===0){

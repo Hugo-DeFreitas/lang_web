@@ -54,15 +54,15 @@
         <div class="uk-child-width-1-1 uk-flex-middle uk-flex-center" data-uk-height-viewport="50" data-uk-grid>
             <div class="uk-margin uk-align-center uk-flex-middle" data-uk-height-viewport="offset-bottom: 100">
                 <div class="uk-container">
-                    <form id="search-form" class="uk-search uk-search-large uk-align-center">
-                        <input name="search" id="search-tags" aria-label="Search bar input. Works with document's tags" class="uk-search-input" type="search" placeholder="Search tags..." autofocus>
+                    <form aria-describedby="search-bar-meta" id="search-form" class="uk-search uk-search-large uk-align-center">
+                        <input name="search" id="search-tags" aria-label="Search bar input. Works with document's tags" class="uk-search-input" type="search" placeholder="Search in documents..." autofocus>
                     </form>
                 </div>
             </div>
             <div class="uk-margin">
                 <div class="uk-container">
                     <h1 class="uk-text-center uk-text-primary">Results</h1>
-                    <p class="uk-text-center uk-text-meta">(If you start your search with a "#", the search will only apply to documents tags. If it's not the case, the search will be made globally (recursively) through the different documents parts.</p>
+                    <p id="search-bar-meta" class="uk-text-center uk-text-meta">(If you start your search with a "#", the search will only apply to documents tags. If it's not the case, the search will be made globally (recursively) through the different documents parts.</p>
                     <ul id="search-engine-results" class="uk-list uk-list-divider">
 
                     </ul>
