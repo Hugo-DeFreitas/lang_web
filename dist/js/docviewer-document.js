@@ -112,7 +112,7 @@ class DocViewerDocument {
             <div class="uk-grid">
                 <!--            Informations générales-->
                 <div class="uk-margin-medium-bottom uk-width-1-2@l">
-                    <h1 id="rfc-general-informations-heading" class="uk-text-large">General informations</h1>
+                    <h2 id="rfc-general-informations-heading" class="uk-text-large">General informations</h2>
                     <dl aria-labelledby="rfc-general-informations-heading">
                         <!--            Emetteur-->
                         <dt class="uk-display-inline" id="submitter-label">Sender</dt>
@@ -140,7 +140,7 @@ class DocViewerDocument {
     
                 <!--            Informations propres à l'auteur de la fiche-->
                 <div class="uk-width-1-2@l">
-                    <h1 id="rfc-author-informations-heading" class="uk-text-large">Author${this.author.length > 1 ? 's' : ''}</h1>
+                    <h2 id="rfc-author-informations-heading" class="uk-text-large">Author${this.author.length > 1 ? 's' : ''}</h2>
                     ${Object.keys(this.author).map((authorObject,i)=>`
                     <dl aria-labelledby="rfc-author-informations-heading">
                         <!--            Prénom-->

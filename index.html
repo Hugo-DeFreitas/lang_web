@@ -72,14 +72,14 @@
     </div>
 </div>
 
-<section id="sidebar" data-uk-offcanvas>
+<section id="sidebar" data-uk-offcanvas aria-labelledby="docviewer-navbar-title">
     <div class="uk-offcanvas-bar">
         <!-- Fermeture de la sidebar -->
         <button id="close-sidebar" class="uk-offcanvas-close" type="button" data-uk-close aria-label="Close the sidebar"></button>
 
         <!-- Texte de présentation de DocViewer-->
         <div id="docviewer-introduction" class="uk-margin-xlarge-bottom">
-            <h1 id="docviewer-navbar-title" aria-describedby="docviewer-navbar-description" class="uk-h3">DocViewer</h1>
+            <h2 id="docviewer-navbar-title" aria-describedby="docviewer-navbar-description" class="uk-h3">DocViewer</h2>
             <p id="docviewer-navbar-description" class="uk-text-small mono-font" aria-labelledby="docviewer-navbar-title">
                 DocViewer offers you a brand new, accessible, and easy way to consult your favorite <em>technical documentation</em>, as a developer.
                 Request for comments, frameworks's description, languages : you can find here exact, reliable, well organized information.
@@ -87,8 +87,8 @@
         </div>
 
         <!-- Navigation entre les différentes fiches RFC-->
-        <div id="sidebar-nav-between-rfc" role="contentinfo">
-            <h1 id="sidebar-nav-between-rfc-heading" class="uk-nav-header">Requests for comments</h1>
+        <section id="sidebar-nav-between-rfc">
+            <h2 id="sidebar-nav-between-rfc-heading" class="uk-nav-header uk-h3">Requests for comments</h2>
             <p id="sidebar-nav-between-rfc-description" class="uk-text-small uk-text-italic">
                 Click on the links below to change the content of this page.
             </p>
@@ -115,7 +115,7 @@
                 </li>
             </ul>
 
-        </div>
+        </section>
     </div>
 </section>
 
