@@ -50,5 +50,8 @@
       "phone" : "(617) 873-4323",
       "email" : "dwaitzman@bbn.com"
     }
+  ],
+  "tags" : [
+    "ip","datagram","aviary","waitzman","security","networks"
   ]
 }
