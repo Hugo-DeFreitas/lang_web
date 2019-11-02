@@ -1,5 +1,7 @@
 # DocViewer
-## Dépôt pour le module de langages pour le Web @LP DEVWEB
+## [Démo du projet](http://hugo-dft.alwaysdata.net/docviewer/)
+## Professeur responsable : Gérard Olivier
+## https://github.com/Hugo-DeFreitas/lang_web
 # Spécificités du projet
 
 Ce projet :
@@ -10,6 +12,3 @@ Ce projet :
 * utilise du **SCSS** avec un framework CSS que j'ai dû découvrir, **UIKit**. Toutefois, j'ai dû construire avec Yarn des scripts "maisons" pour la compilation et les tests unitaires.
 * la possibilité de télécharger les JSON sources qui viennent alimenter la vue.
 * d'autres fonctionnalités sympathiques.
-
-# [Démo du projet](http://hugo-dft.alwaysdata.net/docviewer/)
-# Professeur responsable : Gérard Olivier
