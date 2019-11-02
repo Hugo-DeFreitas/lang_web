@@ -21,7 +21,7 @@ class DocViewerDocument {
 
     toHTML(){
         let finalString = `
-<main role="main" data-document_id="${this.id}" class="uk-align-center uk-align-center uk-width-5-6@s uk-width-4-5@l">
+<main data-document_id="${this.id}" class="uk-align-center uk-align-center uk-width-5-6@s uk-width-4-5@l">
     <section>
         <!--    Bouton pour ouvrir la modal qui contient les informations annexes de la documentation technique (status, copyright, ...)-->
         <div class="uk-margin-medium uk-text-center">
@@ -80,15 +80,15 @@ class DocViewerDocument {
         
         <!--    Pour chaque 'content.parts' du document, on vient construire dynamiquement les liens-->
         
-        <div id="modal-summary_${this.id}" class="uk-modal-full" data-uk-modal>
+        <div aria-labelledby="document-summary-heading_${this.id}" id="modal-summary_${this.id}" class="uk-modal-full" data-uk-modal>
             <button class="uk-modal-close-full uk-close-large" type="button" data-uk-close></button>
             <div class="uk-modal-dialog">
-                <div class="uk-container">
-                    <h1>Document's summary</h1>
-                    <nav class="uk-align-center uk-text-small">
+                <div class="uk-container uk-section uk-flex uk-flex-center uk-flex-middle uk-text-center" data-uk-height-viewport="offset-top : true;">
+                    <h1 id="document-summary-heading_${this.id}">Document's summary</h1>
+                    <nav id="document-summary_${this.id}" class="uk-align-center uk-text-small">
                         <ul role="menu" class="uk-list uk-list-large uk-list-divider">
                             ${Object.keys(this.content.parts).map((part,i)=>`
-                            <li class="uk-modal-close"><a href="#section-content-${i}" data-uk-scroll>${this.content.parts[i].partTitle}</a></li>
+                            <li class="uk-modal-close uk-text-large"><a href="#section-content-${i}" data-uk-scroll>${this.content.parts[i].partTitle}</a></li>
                             `).join('')}
                         </ul>
                     </nav>
@@ -99,7 +99,7 @@ class DocViewerDocument {
         <!--    Pour chaque 'content.parts' du document, on créé une nouvelle section-->
         ${Object.keys(this.content.parts).map((part,i)=>`
         <section aria-labelledby="heading-section-${i}" id="section-content-${i}" class="uk-section uk-container mono-font">
-            <h1 id="heading-section-${i}" class="uk-h2">${this.content.parts[i].partTitle}&nbsp;<a role="scrollbar" aria-label="Go to the top of the page" data-uk-totop data-uk-scroll></a></h1>
+            <h1 id="heading-section-${i}" class="uk-h2 uk-text-uppercase">${this.content.parts[i].partTitle}&nbsp;<a aria-label="Go to the top of the page" data-uk-totop data-uk-scroll></a></h1>
             ${this.content.parts[i].content}
         </section>
         ${(i+1) === this.content.parts.length ? '' : '<hr class="uk-divider-small">'}

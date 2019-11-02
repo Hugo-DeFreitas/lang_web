@@ -18,8 +18,8 @@
         <ul class="uk-navbar-nav">
             <li class="uk-active">
                 <a class="uk-navbar-item uk-logo">
-                    <img id="docviewer-logo" class="uk-animation-stroke" width="50" height="50" src="src/images/icons/file-text.svg"
-                         alt="Logo du site, une simple feuille de papier" data-uk-svg="stroke-animation: true">
+                    <img id="docviewer-logo" width="50" height="50" src="src/images/icons/file-text.svg"
+                         alt="Logo du site, une simple feuille de papier">
                     &nbsp;DocViewer
                 </a>
             </li>
@@ -31,6 +31,13 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li class="uk-active">
+                <a class="uk-navbar-item">
+                    <img aria-label="Open the search engine modal"
+                         id="open-search-engine" width="35" height="35" src="src/images/icons/search.svg"
+                         alt="search's symbol" data-uk-toggle="target: #modal-search-engine">
+                </a>
+            </li>
+            <li class="uk-active">
                 <a class="uk-navbar-item uk-logo">
                     <img aria-label="Open the sidebar"
                          id="open-sidebar" width="40" height="40" src="src/images/icons/menu.svg"
@@ -40,6 +47,30 @@
         </ul>
     </div>
 </nav>
+
+<div id="modal-search-engine" class="uk-modal-full" data-uk-modal>
+    <div class="uk-modal-dialog" data-uk-height-viewport>
+        <button aria-label="Close the search engine" class="uk-modal-close-full uk-close-large" type="button" data-uk-close></button>
+        <div class="uk-child-width-1-1 uk-flex-middle uk-flex-center" data-uk-height-viewport="50" data-uk-grid>
+            <div class="uk-margin uk-align-center uk-flex-middle" data-uk-height-viewport="offset-bottom: 100">
+                <div class="uk-container">
+                    <form id="search-form" class="uk-search uk-search-large uk-align-center">
+                        <input name="search" id="search-tags" aria-label="Search bar input. Works with document's tags" class="uk-search-input" type="search" placeholder="Search tags..." autofocus>
+                    </form>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <div class="uk-container">
+                    <h1 class="uk-text-center uk-text-primary">Results</h1>
+                    <p class="uk-text-center uk-text-meta">(If you start your search with a "#", the search will only apply to documents tags. If it's not the case, the search will be made globally (recursively) through the different documents parts.</p>
+                    <ul id="search-engine-results" class="uk-list uk-list-divider">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <section id="sidebar" data-uk-offcanvas>
     <div class="uk-offcanvas-bar">
