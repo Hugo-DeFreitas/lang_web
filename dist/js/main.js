@@ -35,14 +35,14 @@ searchForm.addEventListener("submit", function(evt) {
             if(searchBar.value.startsWith("#")){
                 if(deepFind(documentLoaded.tags,searchBar.value.replace(/[#]+/g,''))){
                     searchEngineResults
-                        .appendChild(createElementFromHTML(`<li><a data-document_source_json_name="RFC${documentLoaded.id}" class="change-document-trigger"><span class="uk-text-primary">RFC${documentLoaded.id}</span> - ${documentLoaded.title}</a></li>`));
+                        .appendChild(createElementFromHTML(`<li class="uk-modal-close"><a data-document_source_json_name="RFC${documentLoaded.id}" class="change-document-trigger"><span class="uk-text-primary">RFC${documentLoaded.id}</span> - ${documentLoaded.title}</a></li>`));
                     ++resultCounter;
                 }
             }
             else {
                 if(deepFind(documentLoaded,searchBar.value)){
                     searchEngineResults
-                        .appendChild(createElementFromHTML(`<li><a data-document_source_json_name="RFC${documentLoaded.id}" class="change-document-trigger"><span class="uk-text-primary">RFC${documentLoaded.id}</span> - ${documentLoaded.title}</a></li>`));
+                        .appendChild(createElementFromHTML(`<li class="uk-modal-close"><a data-document_source_json_name="RFC${documentLoaded.id}" class="change-document-trigger"><span class="uk-text-primary">RFC${documentLoaded.id}</span> - ${documentLoaded.title}</a></li>`));
                     ++resultCounter;
                 }
             }
